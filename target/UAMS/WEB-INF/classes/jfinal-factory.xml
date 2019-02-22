@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<!-- 控制器路由配置 -->
+	<controller route="/" class="com.zens.adms.controller.MainController"></controller>
+	<controller route="/public" class="spin.common.controller.PublicController"></controller>
+	<controller route="/user" class="com.zens.adms.controller.UserController"></controller>
+	<controller route="/inter" class="com.zens.adms.controller.inter.InterController"></controller>
+	<controller route="/inject" class="com.zens.adms.controller.inter.MediaInjectController"></controller>
+	<controller route="/media" class="com.zens.adms.controller.MediaController"></controller>
+	<controller route="/upload" class="com.zens.adms.controller.UploadController"></controller>
+	<controller route="/contract" class="com.zens.adms.controller.ContractController"></controller>
+	<controller route="/placeholder" class="com.zens.adms.controller.PlaceholderController"></controller>
+	<controller route="/backup" class="com.zens.adms.controller.BackupController"></controller>
+
+	<!-- 数据库映射配置 -->
+	<entity resident="true" index="menu" mapping="t_menu" key="ID" intro="菜单"></entity>
+	<entity resident="true" index="syslog" mapping="t_sys_log" key="ID" intro="系统日志"></entity>
+	<entity resident="true" index="config" mapping="t_config" key="ID" intro="配置"></entity>
+	<entity resident="true" index="inject" mapping="t_inject_task" key="ID" intro="注入任务" foreignKey="AssetID"></entity>
+	<entity resident="true" index="group" mapping="t_group" key="ID" intro="组"></entity>
+	<entity resident="false" index="user" mapping="t_user" key="ID" intro="用户"></entity>
+	<entity resident="false" index="media" mapping="t_media" key="ID" intro="媒资"></entity>
+	<entity resident="true" index="video" mapping="t_media_video" key="ID" intro="影片" foreignKey="GID"></entity>
+	<entity resident="true" index="poster" mapping="t_media_poster" key="ID" intro="海报" foreignKey="GID"></entity>
+	<entity resident="false" index="tag" mapping="t_media_tag" key="ID" intro="标签"></entity>
+	<entity resident="true" index="title" mapping="t_media_title" key="ID" intro="标题" foreignKey="GID"></entity>
+	<entity resident="true" index="actor" mapping="t_media_actor" key="ID" intro="演员" foreignKey="GID"></entity>
+	<entity resident="true" index="director" mapping="t_media_director" key="ID" intro="导演" foreignKey="GID"></entity>
+	<entity resident="true" index="desc" mapping="t_media_desc" key="ID" foreignKey="GID" intro="描述"></entity>
+	<entity resident="false" index="placeholder" mapping="t_placeholder" key="ID" intro="占位符" foreignKey="GUID"></entity>
+	<entity resident="true" index="contract" mapping="t_contract" key="ID" intro="合同" foreignKey="GUID"></entity>
+</root>

@@ -1,0 +1,187 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+
+<head>
+	<title>UAMS-接口测试-Java</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta name="page-view-size" content="1280*720"/>
+	<meta name="author" content="scumyang@gmail.com"/>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<link rel="shortcut icon" href="favicon.ico">
+</head>
+
+<style type="text/css">
+body
+{
+overflow:auto;padding:0px;margin:0px;color:#ccc;font:normal 18px Tahoma;
+background:#000000;
+-background-image:-moz-linear-gradient(top, #57a740, #468733);
+-background-image:-webkit-gradient(linear, right top, left bottom, color-stop(0, #113366), color-stop(1, #000000));
+-background-image:linear-gradient(to bottom, #113366 0%,#000000 100%);
+}
+
+img,button			{border:0px}
+
+a,a:link,a:visited	{text-decoration:none;font:normal 16px Tahoma;color:#fff}
+a:hover				{text-decoration:underline;color:#ff0}
+
+#eSA				{position:absolute;height:648px;left:64px;top:36px}
+
+li
+{
+font:normal 20px Tahoma;
+padding-left:20px;
+margin-bottom:20px;
+}
+
+h2
+{
+color:#f80;
+}
+
+label
+{
+font:normal 16px tahoma;
+}
+
+input
+{
+width:250px;
+height:40px;
+font:bold 16px Tahoma;
+color:#6af;
+background:#333;
+border:1px solid #555;
+border-radius:8px;
+padding:5px;
+}
+
+.inp_s
+{
+width:200px;
+}
+
+</style>
+
+<script type="text/javascript" src=""></script>
+<script type="text/javascript">
+$G =
+{
+	onPageLoad: function()
+	{
+		try
+		{
+			window.$ ? 0 : window.$ = function $( E ){ return document.getElementById( E ); }
+
+			document.onkeydown = function( E )
+			{
+				var E = E || event, K = E.keyCode;
+				switch( K )
+				{
+					//case 48: location.reload(); break;
+				}
+			}
+		}
+		catch( E )
+		{
+			alert( '$G.onPageLoad(): ' + E.message );
+		}
+	}
+
+	,onPageUnload: function()
+	{
+	}
+}
+
+</script>
+
+<body onload="$G.onPageLoad()" onunload="$G.onPageUnload()">
+
+<!--安全区-->
+<div id="eSA">
+<ul>
+	<h2>UAMS 接口</h2>
+	<li><a href="javascript:open('/UAMS/media/search?key='+ $('key').value+'&pageSize='+ $('pageSize').value+'&pageNumber='+ $('pageNumber').value)" target="_blank">搜索影片 media/search</a>
+	&nbsp;<label for="tagId">key：</label><input id="key" value="dd"/>
+	<label for="tagId">pageSize：</label><input id="pageSize" value="3"/>
+	<label for="tagId">pageNumber：</label><input id="pageNumber" value="1"/>
+	
+	<li><a href="javascript:open('/UAMS/media/getMedias?pageSize='+ $('_pageSize').value+'&currPage='+ $('currPage').value+'&orderCase=ID+desc&deleted=0&sifter=')" target="_blank">查询所有影片 media/getMedias</a>
+	<label for="tagId">pageSize：</label><input id="_pageSize" value="3"/>
+	<label for="tagId">currPage：</label><input id="currPage" value="1"/>
+		
+	<li><a href="javascript:open('/UAMS/media/getMedia?GUID='+ $('GUID').value)" target="_blank">查询影片 media/getMedia</a>
+	&nbsp;<label for="tagId">GUID：</label><input id="GUID" value="U_150612_4F4B0A95F60D"/>
+		
+	<li><a href="javascript:open('/UAMS/media/getMediaByIdx?FGUID='+ $('FGUID').value+'&Idx='+ $('Idx').value)" target="_blank">查询指定集数电视剧 media/getMediaByIdx</a>
+	&nbsp;<label for="tagId">FGUID：</label><input id="FGUID" value="U_173613_EA495B930536"/>
+	&nbsp;<label for="tagId">Idx：</label><input id="Idx" value="3"/>
+	
+	<li><a href="javascript:open('/UAMS/media/getMedias?deleted=0&currPage=1&pageSize=16&orderCase=CreateTime+desc&sifter=string:Title@'+ $('title').value +',number:Type@!3')" target="_blank">根据名称获取影片 media/getMedias</a>	
+	&nbsp;<label for="tagId">Title：</label><input id="title" value="世界"/>
+	
+	<li><a href="javascript:open('/UAMS/device/getDevices?deleted=0&currPage=1&pageSize=16')" target="_blank">获取所有设备信息 device/getDevices</a>
+		
+	<li><a href="javascript:open('/UAMS/inject/getEpisode')" target="_blank">获取所有剧集 inject/getEpisode</a>	
+	
+	
+	<li><a href="javascript:open('/UAMS/inter/getMedias?sifter=number:State@1,number:PID@0&PageNumber=1&PageSize=12&0=0')" target="_blank">获取所有剧头 inter/getMedias</a>
+	
+	<li><a href="javascript:open('/UAMS/device/getDevices?deleted=0&currPage=1&pageSize=16&orderCase=CreateTime+desc&sifter=string:GUID@'+ $('sifter').value)" target="_blank">查询设备信息 device/getDevices</a>	
+	&nbsp;<label for="tagId">GUID：</label><input id="sifter" value="3131351f-b9e6-43b4-aef5-bbf96739fb8d"/>
+	
+	<li><a href="javascript:open('/UAMS/media/getImagesByGUIDs?ids='+ $('ids').value)" target="_blank">根据IDs获取海报 media/getImagesByGUIDs</a>	
+	&nbsp;<label for="tagId">Title：</label><input id="ids" value="86,87,88,89"/>
+	
+	<li><a href="javascript:open('/UAMS/media/history?GUID='+ $('GUIDh').value+'&UserID='+ $('UserIDh').value)" target="_blank">添加历史 media/history</a>
+	&nbsp;<label for="tagId">GUID：</label><input id="GUIDh" value="U_153920_104899B3CCBE"/>
+	<label for="tagId">UserID：</label><input id="UserIDh" value="d3-32-ad-y6-2w-0a"/>
+		
+	<li><a href="javascript:open('/UAMS/media/gethistory?UserID='+ $('UserIDhg').value+'&pageSize='+ $('pageSize').value+'&pageNumber='+ $('pageNumber').value)" target="_blank">查询历史 media/gethistory</a>
+	&nbsp;<label for="tagId">UserID：</label><input id="UserIDhg" value="d3-32-ad-y6-2w-0a"/>
+	<label for="tagId">pageSize：</label><input id="pageSize" value="3"/>
+	<label for="tagId">pageNumber：</label><input id="pageNumber" value="1"/>
+	
+	<li><a href="javascript:open('/UAMS/media/collect?GUID='+ $('GUIDc').value+'&UserID='+ $('UserIDc').value)" target="_blank">添加收藏 media/collect</a>
+	&nbsp;<label for="tagId">GUID：</label><input id="GUIDc" value="U_153920_104899B3CCBE"/>
+	<label for="tagId">UserID：</label><input id="UserIDc" value="d3-32-ad-y6-2w-0a"/>
+		
+	<li><a href="javascript:open('/UAMS/media/getcollect?UserID='+ $('UserIDcg').value+'&pageSize='+ $('pageSize').value+'&pageNumber='+ $('pageNumber').value)" target="_blank">查询收藏 media/getcollect</a>
+	&nbsp;<label for="tagId">UserID：</label><input id="UserIDcg" value="d3-32-ad-y6-2w-0a"/>
+	<label for="tagId">pageSize：</label><input id="pageSize" value="3"/>
+	<label for="tagId">pageNumber：</label><input id="pageNumber" value="1"/>
+	
+	<li><a href="javascript:open('/UAMS/media/delcollect?GUID='+ $('GUIDcd').value+'&UserID='+ $('UserIDcd').value)" target="_blank">删除收藏 media/delcollect</a>
+	&nbsp;<label for="tagId">GUID：</label><input id="GUIDcd" value="U_153920_104899B3CCBE"/>
+	<label for="tagId">UserID：</label><input id="UserIDcd" value="d3-32-ad-y6-2w-0a"/>
+	
+	<li><a href="javascript:open('/UAMS/media/addbookmark?GUID='+ $('GUIDaddbookmark').value+'&UserID='+ $('UserIDaddbookmark').value+'&CONTENT_NAME='+ $('CONTENT_NAME').value+'&CONTENT_TIME='+ $('CONTENT_TIME').value+'&CONTENT_TYPE='+ $('CONTENT_TYPE').value)" target="_blank">记录书签 media/addbookmark</a>
+	&nbsp;<label for="tagId">GUID：</label><input id="GUIDaddbookmark" value="U_153920_104899B3CCBE"/>
+	<label for="tagId">UserID：</label><input id="UserIDaddbookmark" value="d3-32-ad-y6-2w-0a"/>
+	<label for="tagId">CONTENT_NAME：</label><input id="CONTENT_NAME" value="三生三世十里桃花01"/>
+	<label for="tagId">CONTENT_TIME：</label><input id="CONTENT_TIME" value="100"/>
+	<label for="tagId">CONTENT_TYPE：</label><input id="CONTENT_TYPE" value="series"/>
+	
+	<li><a href="javascript:open('/UAMS/media/delbookmark?GUID='+ $('GUIDdelbookmark').value+'&UserID='+ $('UserIDdelbookmark').value)" target="_blank">删除书签 media/delbookmark</a>
+	&nbsp;<label for="tagId">GUID：</label><input id="GUIDdelbookmark" value="U_153920_104899B3CCBE"/>
+	<label for="tagId">UserID：</label><input id="UserIDdelbookmark" value="d3-32-ad-y6-2w-0a"/>
+	
+	<li><a href="javascript:open('/UAMS/media/getbookmark?GUID='+ $('GUIDgetbookmark').value+'&UserID='+ $('UserIDgetbookmark').value)" target="_blank">获取书签 media/getbookmark</a>
+	&nbsp;<label for="tagId">GUID：</label><input id="GUIDgetbookmark" value="U_153920_104899B3CCBE"/>
+	<label for="tagId">UserID：</label><input id="UserIDgetbookmark" value="d3-32-ad-y6-2w-0a"/>
+	
+	<li><a href="javascript:open('/UAMS/media/saveDot?GUID='+ $('GUIDp').value+'&Programs='+ $('Programs').value)" target="_blank">保存打点插条节目单 media/saveDot</a>
+	&nbsp;<label for="tagId">GUID：</label><input id="GUIDp" value="U_153920_104899B3CCBE"/>
+	<label for="tagId">Programs：</label><input id="Programs" value="d3-32-ad-y6-2w-0a"/>
+	
+	<li><a href="javascript:open('/UAMS/media/getDot?GUID='+ $('GUIDp').value)" target="_blank">获取打点插条节目单 media/saveDot</a>
+	&nbsp;<label for="tagId">GUID：</label><input id="GUIDp" value="U_153920_104899B3CCBE"/>
+	
+	<li><a href="javascript:open('/UAMS/inject/scan')" target="_blank">扫描媒资文件 inject/scan</a>	
+</ul>
+</div>
+
+</body>
+</html>
